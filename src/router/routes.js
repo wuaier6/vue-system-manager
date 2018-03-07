@@ -18,7 +18,8 @@ export default [
                     component: resolve => require(['../components/pages/home.vue'], resolve)
                 },
                 {
-                    path: '/form',
+                    name:'form',
+                    path: '/form/:id',
                     component: resolve => require(['../components/pages/form.vue'], resolve)
                 },
                 {
@@ -28,6 +29,18 @@ export default [
                 {
                     path: '/table',
                     component: resolve => require(['../components/pages/active_list.vue'], resolve)
+                },
+                {
+                  path: '/foo',
+                  component: resolve => require(['../components/pages/home.vue'], resolve),
+                  children: [
+                    {
+                     path: 'bar',
+                    component: resolve => require(['../components/pages/home.vue'], resolve),
+                      // a meta field
+                      meta: { requiresAuth: true }
+                    }
+                  ]
                 }
             ]
         },

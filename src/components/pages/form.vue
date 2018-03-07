@@ -1,5 +1,6 @@
 <template>
-    <div>
+
+  <div>
     <el-form ref="form" :model="form" label-width="120px">
   <el-form-item label="Activity name">
     <el-input v-model="form.name"></el-input>
@@ -49,14 +50,16 @@
 <script>
   import Form from 'vform'
   export default {
-  
+
+
     metaInfo () {
+  
       return { title: this.$t('settings') }
     },
 
     data: () => ({
       form: new Form({
-        name: '',
+          name: '',
           region: '',
           date1: '',
           date2: '',
@@ -69,7 +72,10 @@
 
     methods: {
       async update () {
-        await this.form.patch('/api/settings/profile')
+        console.log(this.$store)
+        // Fetch the user.
+        await this.$store.dispatch('auth/fetchUser')
+         //await this.form.patch('/api/settings/profile')
 
         this.form.reset()
       }

@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import i18n from './plugin/i18n'
+import store from './store'
 import router from './router'
 
 import ElementUI from 'element-ui';
@@ -13,6 +14,7 @@ import './plugin'
 Vue.use(ElementUI);
 new Vue({
 	i18n,
+	store,
     router,
     render: h => h(App)
 }).$mount('#app');
